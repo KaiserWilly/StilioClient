@@ -1,0 +1,62 @@
+package engine;
+
+import java.io.Serializable;
+
+/**
+ * This class serves to simulate all of the actions that are taken using contracts
+ */
+public class Contract implements Serializable{
+    Company vendor;
+    Company contractee;
+    Integer unitsNeeded;
+    Double pricePerUnit;
+    Double totalPrice;
+    Integer creditOfContractor;
+    Double timeFrame;
+
+    public void Contract(Integer units, Double pricePer, Double total, Integer credit, Double time/*Don't know how we want to do this one however*/,Company contractor, Company client){
+        vendor = contractor;
+        contractee = client;
+        unitsNeeded = units;
+        pricePerUnit = pricePer;
+        totalPrice = total;
+        creditOfContractor = credit;
+        timeFrame = time;
+    }
+    public void Contract(Company contractor, Company client){
+        vendor = contractor;
+        contractee = client;
+    }
+
+    public void newContract(Integer unitsNeed, Double price, Double total, Integer credit, Double time, Company contractor, Company client){ //Used to create a new production contract to be added to the "global" contract server
+        Contract contract = new Contract();
+        contract.Contract(unitsNeed, price, total, credit, time, contractor, client);
+
+    }
+
+    public void acceptContract(Integer contractID){ //Takes down contract from Contract Node when accepted
+
+    }
+
+    public boolean contractFulfilled(Double contractTimeFrame, Integer contractID){ //Checks to see if the contract was completed on time
+        if (contractTimeFrame < timeFrame){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public void completeContract(Boolean fulfilled, Company vendor){ //Sets the rewards for completing the contract on time
+        int score = vendor.getCreditScore();
+        double money = totalPrice;
+        int creditReward = 2;
+        if (fulfilled){
+            vendor.setCreditScore(score + creditReward);
+            vendor.setMoneyOnHand(vendor.getMoneyOnHand() + money);
+        }
+        else{
+            vendor.setCreditScore(score - creditReward);
+        }
+    }
+}
