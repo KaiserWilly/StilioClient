@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by The Man on 1/28/2017.
+ * Class for testing the creation of objects
  */
 public class EngineMain {
 
     public static void main(String[] args) {
 //        testCompanyCreation();
-        testMachineCreation();
+//        testMachineCreation();
+//        testContract();
+        testProduction();
     }
     public static void testCompanyCreation(){
         List<Machine> machineList = new ArrayList<Machine>();
@@ -31,7 +33,29 @@ public class EngineMain {
         System.out.println("Chance to Reduce Machine Strength: " + machine.getChanceToReduceMachineStrength());
         System.out.println("Production Speed: " + machine.getSpeedOfMachine());
     }
+//    public static void testContract(){
+//        Company contractor = new Company("MyCompany");
+//        Company contractee = new Company("YourCompany");
+//
+//        Contract contract = new Contract(3, 10.0, 30.0, 50, 25.0, contractor, contractee);
+//        System.out.println("New Contract Created: ");
+//        System.out.println("Units Needed: " + contract.getUnitsNeeded());
+//        System.out.println("Unit Price: " + contract.getPricePerUnit());
+//        System.out.println("Total Price: " + contract.getTotalPrice());
+//        System.out.println("Credit of Contractor: " + contract.getCreditOfContractor());
+//        System.out.println("Time to Fulfill: " + contract.getTimeFrame());
+//        System.out.println("Contract ID: " + contract.getContractID());
+//        System.out.println("Contractor: " + contract.getVendor());
+//        System.out.println("Contractee: " + contract.getContractee());
+//    }
     public static void testProduction(){
+        List<Machine> machineList = new ArrayList<Machine>();
+        Machine newMachine = new Machine(10, 30);
+        machineList.add(newMachine);
 
+        Production production = new Production(machineList);
+        System.out.println("New Production Order Created");
+        System.out.println("Time to Produce: " + production.timeToProduce(3, 10));
+        System.out.println("Total Speed of Machines: " + production.getTotalSpeedOfMachines());
     }
 }

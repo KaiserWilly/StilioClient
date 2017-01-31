@@ -25,6 +25,10 @@ public class Company implements Serializable{
         machines = productionMachines;
     }
 
+    public Company(String name){
+        companyName = name;
+    }
+
     public Company(String name, String indName, Integer credit) {
         companyName = name;
         industry = indName;

@@ -6,14 +6,14 @@ import java.io.Serializable;
  * This class serves to simulate all of the actions that are taken using contracts
  */
 public class Contract implements Serializable{
-    Company vendor;
-    Company contractee;
-    Integer unitsNeeded;
-    Double pricePerUnit;
-    Double totalPrice;
-    Integer creditOfContractor;
-    Double timeFrame;
-    Integer contractID;
+    private Company vendor;
+    private Company contractee;
+    private Integer unitsNeeded;
+    private Double pricePerUnit;
+    private Double totalPrice;
+    private Integer creditOfContractor;
+    private Double timeFrame;
+    private Integer contractID;
 
     public Contract(Integer units, Double pricePer, Double total, Integer credit, Double time/*Don't know how we want to do this one however*/,Company contractor, Company client){
         vendor = contractor;
@@ -30,6 +30,27 @@ public class Contract implements Serializable{
         contractee = client;
     }
 
+    public Company getVendor(){
+        return vendor;
+    }
+    public Company getContractee(){
+        return contractee;
+    }
+    public Integer getUnitsNeeded(){
+        return unitsNeeded;
+    }
+    public Double getPricePerUnit(){
+        return pricePerUnit;
+    }
+    public Double getTotalPrice(){
+        return totalPrice;
+    }
+    public Integer getCreditOfContractor(){
+        return creditOfContractor;
+    }
+    public Double getTimeFrame(){
+        return timeFrame;
+    }
     public Integer getContractID(){
         return contractID;
     }

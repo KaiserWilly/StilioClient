@@ -8,10 +8,11 @@ import java.util.List;
  */
 public class Production implements Serializable{
     private List<Machine> machinesOnFloor;
-    private Integer totalSpeedOfMachines;
+    private Integer totalSpeedOfMachines = 0;
 
     public Production(List<Machine> machinesOnFloor){
         this.machinesOnFloor = machinesOnFloor;
+        setTotalSpeedOfMachines(this.machinesOnFloor);
     }
 
     public void setMachinesOnFloor(List<Machine> machinesOnFloor){
@@ -19,6 +20,14 @@ public class Production implements Serializable{
     }
     public List<Machine> getMachinesOnFloor(){
         return machinesOnFloor;
+    }
+    public void setTotalSpeedOfMachines(List<Machine> machinesOnFloor){
+        for (int i = 0; i < machinesOnFloor.size(); i++){
+            totalSpeedOfMachines = totalSpeedOfMachines + machinesOnFloor.get(i).getSpeedOfMachine();
+        }
+    }
+    public Integer getTotalSpeedOfMachines(){
+        return totalSpeedOfMachines;
     }
 
     public Integer timeToProduce(Integer numberOfItems, Integer timePerItem){
