@@ -13,8 +13,9 @@ public class Contract implements Serializable{
     Double totalPrice;
     Integer creditOfContractor;
     Double timeFrame;
+    Integer contractID;
 
-    public void Contract(Integer units, Double pricePer, Double total, Integer credit, Double time/*Don't know how we want to do this one however*/,Company contractor, Company client){
+    public Contract(Integer units, Double pricePer, Double total, Integer credit, Double time/*Don't know how we want to do this one however*/,Company contractor, Company client){
         vendor = contractor;
         contractee = client;
         unitsNeeded = units;
@@ -22,20 +23,19 @@ public class Contract implements Serializable{
         totalPrice = total;
         creditOfContractor = credit;
         timeFrame = time;
+        contractID = contractID + 1;
     }
-    public void Contract(Company contractor, Company client){
+    public Contract(Company contractor, Company client){
         vendor = contractor;
         contractee = client;
     }
 
-    public void newContract(Integer unitsNeed, Double price, Double total, Integer credit, Double time, Company contractor, Company client){ //Used to create a new production contract to be added to the "global" contract server
-        Contract contract = new Contract();
-        contract.Contract(unitsNeed, price, total, credit, time, contractor, client);
-
+    public Integer getContractID(){
+        return contractID;
     }
 
-    public void acceptContract(Integer contractID){ //Takes down contract from Contract Node when accepted
-
+    public void newContract(Integer unitsNeed, Double price, Double total, Integer credit, Double time, Company contractor, Company client){ //Used to create a new production contract to be added to the "global" contract server
+        Contract contract = new Contract(unitsNeed, price, total, credit, time, contractor, client);
     }
 
     public boolean contractFulfilled(Double contractTimeFrame, Integer contractID){ //Checks to see if the contract was completed on time

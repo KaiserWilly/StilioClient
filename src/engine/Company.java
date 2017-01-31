@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by The Man on 1/28/2017.
+ * Created in order to set the parameters of a Company object, and methods to set the values that can be found therein
  */
 public class Company implements Serializable{
 
@@ -14,8 +14,9 @@ public class Company implements Serializable{
     private Double companyValue = 0.0;
     private Integer creditScore = 0;
     private List<Machine> machines;
+    private List Inventory;
 
-    public void Company(String name, String indName, Double money, List<Machine> productionMachines) { //Used for company creation, initizes the starting values of the company
+    public Company(String name, String indName, Double money, List<Machine> productionMachines) { //Used for company creation, initizes the starting values of the company
         companyName = name;
         industry = indName;
         moneyOnHand = money;
@@ -24,17 +25,17 @@ public class Company implements Serializable{
         machines = productionMachines;
     }
 
-    public void Company(String name, String indName, Integer credit) {
+    public Company(String name, String indName, Integer credit) {
         companyName = name;
         industry = indName;
         creditScore = credit;
     }
 
-    public void Company(Double money) {
+    public Company(Double money) {
         moneyOnHand = money;
     }
 
-    public void Company(List inventory) {
+    public Company(List inventory) {
         machines = inventory;
     }
 
@@ -76,6 +77,14 @@ public class Company implements Serializable{
 
     public Integer getCreditScore() {
         return creditScore;
+    }
+
+    public void setMachines(List<Machine> machines){
+        this.machines = machines;
+    }
+
+    public List<Machine> getMachines(){
+        return this.machines;
     }
 
     public void changeMoney(Double change) { //If money is spent or earned then this is what changes it
